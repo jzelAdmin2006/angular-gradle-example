@@ -1,0 +1,17 @@
+plugins {
+    id 'com.github.node-gradle.node' version '3.0.1'
+}
+
+node {
+    version = '14.20.0'
+    npmVersion = '6.14.5'
+    download = true
+}
+
+task ngBuild(type: NpmTask, dependsOn: npmInstall) {
+    args = ['run', 'build']
+}
+
+task build {
+    dependsOn ngBuild
+}
